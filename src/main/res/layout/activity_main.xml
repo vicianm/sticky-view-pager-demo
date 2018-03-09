@@ -24,4 +24,12 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"/>
 
+    <com.github.vicianm.stickyviewpager.VerticalViewPager
+        android:id="@+id/view_pager"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+    </com.github.vicianm.stickyviewpager.VerticalViewPager>
+
 </LinearLayout>

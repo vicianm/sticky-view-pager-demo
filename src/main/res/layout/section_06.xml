@@ -1,16 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.github.vicianm.stickylinearlayout.demo.TestScrollView4
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent" >
-
 <LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
     <LinearLayout
-        android:id="@+id/user01"
+        android:id="@+id/address01"
+        android:layout_marginTop="@dimen/section_margin"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/section_header_bg_inactive"
@@ -21,17 +18,17 @@
         android:paddingTop="10dp" >
 
         <TextView
-            android:id="@+id/title"
+            android:id="@id/title"
             android:layout_width="150dp"
+            android:layout_height="wrap_content"
             android:lines="1"
             android:ellipsize="end"
-            android:layout_height="wrap_content"
-            android:text="User 1"
+            android:text="Address 3"
             android:textAppearance="@style/TextAppearance.AppCompat.Large">
         </TextView>
 
         <TextView
-            android:id="@+id/description"
+            android:id="@id/description"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text=""
@@ -41,7 +38,7 @@
         </TextView>
 
         <ImageView
-            android:id="@+id/img_validation_result"
+            android:id="@id/img_validation_result"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
@@ -51,7 +48,7 @@
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/user01_section"
+        android:id="@+id/address01_section"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/section_content_bg_transition"
@@ -62,32 +59,49 @@
         android:paddingTop="10dp">
 
         <EditText
-            android:id="@+id/user_name"
+            android:id="@+id/address_country"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:hint="Name"
+            android:hint="Country"
             android:inputType="textPersonName"
             android:textAppearance="@style/TextAppearance.AppCompat.Large"></EditText>
 
         <EditText
-            android:id="@+id/user_surname"
+            android:id="@+id/address_city"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:hint="Surname"
+            android:hint="City"
             android:inputType="textPersonName"
             android:textAppearance="@style/TextAppearance.AppCompat.Large"></EditText>
 
         <EditText
-            android:id="@+id/user_id"
+            android:id="@+id/address_street"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:hint="ID"
+            android:hint="Street"
+            android:inputType="textPersonName"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"></EditText>
+
+        <EditText
+            android:id="@+id/address_street_no"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="Street. no."
+            android:inputType="textPersonName"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"></EditText>
+
+        <EditText
+            android:id="@+id/address_zip"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="ZIP"
             android:inputType="textPersonName"
             android:textAppearance="@style/TextAppearance.AppCompat.Large"></EditText>
     </LinearLayout>
 
 </LinearLayout>
-</com.github.vicianm.stickylinearlayout.demo.TestScrollView4>

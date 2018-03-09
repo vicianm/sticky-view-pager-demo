@@ -7,37 +7,32 @@ import android.view.ViewGroup;
 
 import com.github.vicianm.stickyviewpager.VerticalPagerAdapter;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class DemoViewPager extends VerticalPagerAdapter {
+
+    final List<Integer> layoutResIds = new ArrayList<>();
 
     public DemoViewPager(Context context) {
         super(context);
+
+        layoutResIds.add(R.layout.section_01);
+        layoutResIds.add(R.layout.section_02);
+        layoutResIds.add(R.layout.section_03);
+        layoutResIds.add(R.layout.section_03);
+        layoutResIds.add(R.layout.section_05);
+        layoutResIds.add(R.layout.section_06);
+        layoutResIds.add(R.layout.section_07);
+        layoutResIds.add(R.layout.section_08);
     }
 
     @Override
     public Object instantiateItem(ViewGroup collection, final int position) {
-
-        int layoutResId = 0;
-        switch (position) {
-            case 0:
-                layoutResId = R.layout.test1_fragment;
-                break;
-            case 1:
-                layoutResId = R.layout.test2_fragment;
-                break;
-            case 2:
-                layoutResId = R.layout.test3_fragment;
-                break;
-            case 3:
-                layoutResId = R.layout.test4_fragment;
-                break;
-            default:
-                throw new RuntimeException("Invalid index: " + position);
-        }
-
+        int layoutResId = layoutResIds.get(position);
         LayoutInflater inflater = LayoutInflater.from(getContext());
         ViewGroup layout = (ViewGroup) inflater.inflate(layoutResId, collection, false);
         collection.addView(layout);
-
         return layout;
     }
 
@@ -48,7 +43,7 @@ public class DemoViewPager extends VerticalPagerAdapter {
 
     @Override
     public int getCount() {
-        return 4;
+        return layoutResIds.size();
     }
 
     @Override
