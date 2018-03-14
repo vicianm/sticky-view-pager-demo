@@ -20,7 +20,7 @@ public class DemoViewPager extends VerticalPagerAdapter {
         layoutResIds.add(R.layout.section_01);
         layoutResIds.add(R.layout.section_02);
         layoutResIds.add(R.layout.section_03);
-        layoutResIds.add(R.layout.section_03);
+        layoutResIds.add(R.layout.section_04);
         layoutResIds.add(R.layout.section_05);
         layoutResIds.add(R.layout.section_06);
         layoutResIds.add(R.layout.section_07);

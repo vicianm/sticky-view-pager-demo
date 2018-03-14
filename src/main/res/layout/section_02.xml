@@ -7,7 +7,6 @@
 
     <LinearLayout
         android:id="@+id/address01"
-        android:layout_marginTop="@dimen/section_margin"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/section_header_bg_inactive"
@@ -23,7 +22,7 @@
             android:layout_height="wrap_content"
             android:lines="1"
             android:ellipsize="end"
-            android:text="Address 2"
+            android:text="Address 1"
             android:textAppearance="@style/TextAppearance.AppCompat.Large">
         </TextView>
 
