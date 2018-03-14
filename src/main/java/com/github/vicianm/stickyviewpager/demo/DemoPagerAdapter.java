@@ -10,11 +10,11 @@ import com.github.vicianm.stickyviewpager.VerticalPagerAdapter;
 import java.util.ArrayList;
 import java.util.List;
 
-public class DemoViewPager extends VerticalPagerAdapter {
+public class DemoPagerAdapter extends VerticalPagerAdapter {
 
     final List<Integer> layoutResIds = new ArrayList<>();
 
-    public DemoViewPager(Context context) {
+    public DemoPagerAdapter(Context context) {
         super(context);
 
         layoutResIds.add(R.layout.section_01);
