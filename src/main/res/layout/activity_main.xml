@@ -25,10 +25,10 @@
         android:layout_gravity="center"/>
 
     <android.support.v7.widget.RecyclerView
-        android:background="@android:color/holo_green_dark"
         android:id="@+id/recycler_view_header"
+        android:background="@android:color/holo_green_dark"
         android:layout_width="match_parent"
-        android:layout_height="100dp">
+        android:layout_height="?android:attr/listPreferredItemHeight">
     </android.support.v7.widget.RecyclerView>
 
     <com.github.vicianm.stickyviewpager.VerticalViewPager

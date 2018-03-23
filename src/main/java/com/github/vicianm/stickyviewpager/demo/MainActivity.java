@@ -43,6 +43,8 @@ public class MainActivity extends DataBindingActivity {
 
     static class PageChangeListener implements ViewPager.OnPageChangeListener {
 
+        private float SMOOTH_SCROLL_SPEED_PER_PX = 0.5f;
+
         private Context context;
 
         private DemoPagerAdapter demoPagerAdapter;
@@ -61,13 +63,24 @@ public class MainActivity extends DataBindingActivity {
 
             Object currentPageObject = this.demoPagerAdapter.getPrimaryItemObject();
             currentPageIndex = this.demoPagerAdapter.getItemPosition(currentPageObject);
+
+            updateUiHeader(0);
         }
 
         @Override
         public void onPageSelected(int position) {
+            updateUiHeader(position);
+        }
+
+        protected void updateUiHeader(int position) {
             int posOld = currentPageIndex;
             int posNew = position;
+            updateAdapterData(posNew, posOld);
+            currentPageIndex = posNew;
+            scrollToCurrentHeader();
+        }
 
+        protected void updateAdapterData(int posNew, int posOld) {
             if (posNew == posOld) {
                 // no header needs to be updated
             } else if (posNew > posOld) {
@@ -81,9 +94,9 @@ public class MainActivity extends DataBindingActivity {
                     demoHeaderAdapter.removeDatasetItem(i);
                 }
             }
+        }
 
-            currentPageIndex = posNew;
-
+        protected void scrollToCurrentHeader() {
             RecyclerView.SmoothScroller smoothScroller = new LinearSmoothScroller(context) {
                 @Override protected int getVerticalSnapPreference() {
                     return LinearSmoothScroller.SNAP_TO_END;
@@ -92,12 +105,11 @@ public class MainActivity extends DataBindingActivity {
                 @Override
                 protected float calculateSpeedPerPixel(DisplayMetrics displayMetrics) {
                     // TODO what's the default scroll speed
-                    return 0.5f;
+                    return SMOOTH_SCROLL_SPEED_PER_PX;
                 }
             };
-            smoothScroller.setTargetPosition(position);
+            smoothScroller.setTargetPosition(currentPageIndex);
             recyclerView.getLayoutManager().startSmoothScroll(smoothScroller);
-
         }
 
         @Override
