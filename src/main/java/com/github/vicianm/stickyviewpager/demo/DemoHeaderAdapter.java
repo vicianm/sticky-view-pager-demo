@@ -1,9 +1,14 @@
 package com.github.vicianm.stickyviewpager.demo;
 
+import android.content.Context;
+import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -13,6 +18,8 @@ import java.util.List;
 public class DemoHeaderAdapter extends RecyclerView.Adapter<DemoHeaderAdapter.ViewHolder> {
 
     private List<String> dataset;
+
+    private Context context;
 
     // Provide a reference to the views for each data item
     // Complex data items may need more than one view per item, and
@@ -26,8 +33,10 @@ public class DemoHeaderAdapter extends RecyclerView.Adapter<DemoHeaderAdapter.Vi
         }
     }
 
-    public DemoHeaderAdapter() {
+    public DemoHeaderAdapter(Context context) {
         this.dataset = new LinkedList<>();
+        this.context = context;
+        setHasStableIds(true);
     }
 
     public void setDataset(List<String> dataset) {
@@ -62,21 +71,44 @@ public class DemoHeaderAdapter extends RecyclerView.Adapter<DemoHeaderAdapter.Vi
     }
 
     @Override
-    public void onBindViewHolder(ViewHolder holder, int position) {
-        // - get element from your dataset at this position
-        // - replace the contents of the view with that element
-        holder.mTextView.setText(dataset.get(position));
+    public long getItemId(int position) {
+        return position;
     }
-
-//    @Override
-//    public long getItemId(int position) {
-//        return super.getItemId(position);
-//    }
 
     // Return the size of your dataset (invoked by the layout manager)
     @Override
     public int getItemCount() {
         return dataset.size();
+    }
+
+
+    @Override
+    public void onBindViewHolder(ViewHolder holder, int position)
+    {
+        holder.mTextView.setText(dataset.get(position));
+
+        // Here you apply the animation when the view is bound
+        setAnimation(holder.itemView, position);
+    }
+
+    @Override
+    public void onViewDetachedFromWindow(@NonNull ViewHolder holder) {
+        holder.mTextView.clearAnimation();
+    }
+
+    /**
+     * Here is the key method to apply the animation
+     */
+    private void setAnimation(final View viewToAnimate, int position)
+    {
+        Log.d("DemoHeaderAdapter", "setAnimation, pos: " + position);
+        viewToAnimate.post(new Runnable() {
+            @Override
+            public void run() {
+                Animation animation = AnimationUtils.loadAnimation(context, android.R.anim.fade_in);
+                viewToAnimate.startAnimation(animation);
+            }
+        });
     }
 
 }
