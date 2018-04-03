@@ -1,7 +1,6 @@
 package com.github.vicianm.stickyviewpager.demo;
 
 import android.content.Context;
-import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -12,10 +11,12 @@ import android.view.animation.AnimationUtils;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.github.vicianm.stickyviewpager.StickyHeaderAdapter;
+
 import java.util.LinkedList;
 import java.util.List;
 
-public class DemoHeaderAdapter extends RecyclerView.Adapter<DemoHeaderAdapter.ViewHolder> {
+public class DemoHeaderAdapter extends StickyHeaderAdapter<DemoHeaderAdapter.ViewHolder> {
 
     private List<String> dataset;
 
@@ -44,12 +45,14 @@ public class DemoHeaderAdapter extends RecyclerView.Adapter<DemoHeaderAdapter.Vi
         notifyDataSetChanged();
     }
 
-    public void addDatasetItem(String item) {
+    @Override
+    public void addItem(String item) {
         this.dataset.add(item);
         notifyItemInserted(dataset.size()-1);
     }
 
-    public void removeDatasetItem(int position) {
+    @Override
+    public void removeItem(int position) {
         this.dataset.remove(position);
         notifyItemRemoved(position);
     }
@@ -81,7 +84,6 @@ public class DemoHeaderAdapter extends RecyclerView.Adapter<DemoHeaderAdapter.Vi
         return dataset.size();
     }
 
-
     @Override
     public void onBindViewHolder(ViewHolder holder, int position)
     {
@@ -90,11 +92,11 @@ public class DemoHeaderAdapter extends RecyclerView.Adapter<DemoHeaderAdapter.Vi
         // Here you apply the animation when the view is bound
         setAnimation(holder.itemView, position);
     }
-
-    @Override
-    public void onViewDetachedFromWindow(@NonNull ViewHolder holder) {
-        holder.mTextView.clearAnimation();
-    }
+//
+//    @Override
+//    public void onViewDetachedFromWindow(@NonNull ViewHolder holder) {
+//        holder.mTextView.clearAnimation();
+//    }
 
     /**
      * Here is the key method to apply the animation

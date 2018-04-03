@@ -10,6 +10,9 @@ import com.github.vicianm.stickyviewpager.VerticalPagerAdapter;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Adapter responsible for serving pages of the demo app.
+ */
 public class DemoPagerAdapter extends VerticalPagerAdapter {
 
     final List<Integer> layoutResIds = new ArrayList<>();
